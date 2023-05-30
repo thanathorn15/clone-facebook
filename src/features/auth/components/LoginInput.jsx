@@ -1,9 +1,26 @@
-import React from 'react'
+import createClasses from "../../../utils/createClasses";
 
-export default function LoginInput({placeholder}) {
+export default function LoginInput({
+  placeholder,
+  value,
+  onChange,
+  name,
+  isInvalid
+}) {
+  const className = createClasses(
+    'block w-full border rounded-md px-4 py-3.5 outline-none focus:ring-1',
+    isInvalid
+      ? 'border-red-500 focus:ring-red-300'
+      : 'border-gray-300 focus:border-blue-500 focus:ring-blue-300'
+  );
   return (
-    <input className='block w-full border border-gray-300 rounded-md px-4 py-4 outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500' 
-                placeholder={placeholder}
-                />
-  )
+    <input
+      type="text"
+      className={className}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      name={name}
+    />
+  );
 }
